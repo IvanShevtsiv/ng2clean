@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { Routing } from './app.router';
 
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 import { PersonDataService } from './person-data.service';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PersonDataService } from './person-data.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    Routing
+    Routing,
+    SharedModule
   ],
   providers: [PersonDataService],
   bootstrap: [AppComponent]
