@@ -1,0 +1,7 @@
+<form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+  <button type="submit" [disabled]="!personForm.valid">Зберегти</button>
+  <div>
+    <label></label>
+    <input type="text" class="form-control" formControlName="firstName"/>
+  </div>
+</form>
