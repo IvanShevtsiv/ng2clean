@@ -1,6 +1,6 @@
 {
-  "name": "ng2clean",
-  "version": "0.0.0",
+  "name": "casamba",
+  "version": "0.0.1",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -11,6 +11,7 @@
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor"
   },
+  "author": [],
   "private": true,
   "dependencies": {
     "@angular/common": "^2.3.1",
@@ -24,7 +25,8 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.7.2",
+    "ng2-bootstrap": "1.3.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.3.1",
