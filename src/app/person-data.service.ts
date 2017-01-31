@@ -6,7 +6,7 @@ export class PersonDataService {
 
   // Placeholder for last id so we can simulate
   // automatic incrementing of id's
-  lastId: number = 0;
+  lastId = 0;
 
   // Placeholder for todo's
   persons: Person[] = [];
@@ -15,7 +15,7 @@ export class PersonDataService {
 
   // Simulate POST /persons
   addPerson(person: Person): PersonDataService {
-    if(!person.id) {
+    if (!person.id) {
       person.id = ++this.lastId;
     }
 
@@ -31,8 +31,8 @@ export class PersonDataService {
 
   // Simulate PUT /persons/:id
   updatePersonById(id: number, values: Object = {}): Person {
-    let person = this.getPersonById(id);
-    if(!person) {
+    const person = this.getPersonById(id);
+    if (!person) {
       return null;
     }
 
