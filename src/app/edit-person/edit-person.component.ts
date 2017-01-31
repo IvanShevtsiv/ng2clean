@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-person',
@@ -15,13 +15,17 @@ export class EditPersonComponent implements OnInit {
     this.initForm();
   }
 
-  private initForm() {
+  private initForm(): void {
     const now = new Date();
 
     this.personForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', Validators.required],
-      dob: [{year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()}, Validators.required]
+      dob: ['', Validators.required]
     });
+  }
+
+  private save(): void {
+    console.log(this.personForm);
   }
 }
