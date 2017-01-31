@@ -98,7 +98,7 @@ describe('PersonDataService', () => {
 
       service.addPerson(person);
 
-      const updatedPerson: Person = service.updatePersonById(1, {
+      const updatedPerson: Person = service.updatePersonById(2, {
         firstName: 'Max'
       });
 
