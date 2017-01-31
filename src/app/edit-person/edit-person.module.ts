@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { EditPersonComponent } from './edit-person.component';
-import { ReactiveFormsModule } from "@angular/forms";
-import { Routing } from "./edit.router";
+import { Routing } from './edit.router';
+import { PersonResolver } from './person.resolve';
 
 @NgModule({
   imports: [
@@ -10,6 +12,11 @@ import { Routing } from "./edit.router";
     ReactiveFormsModule,
     Routing
   ],
-  declarations: [EditPersonComponent]
+  providers: [
+    PersonResolver
+  ],
+  declarations: [
+    EditPersonComponent
+  ],
 })
 export class EditPersonModule { }
