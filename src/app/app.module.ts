@@ -5,8 +5,8 @@ import { HttpModule } from '@angular/http';
 import { Routing } from './app.router';
 
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { PersonDataService } from './person-data.service';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,10 @@ import { PersonDataService } from './person-data.service';
     FormsModule,
     HttpModule,
     Routing,
+    CoreModule,
     SharedModule
   ],
-  providers: [PersonDataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

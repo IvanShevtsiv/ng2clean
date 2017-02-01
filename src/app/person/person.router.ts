@@ -1,18 +1,18 @@
 import { RouterModule, Route } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
-import { EditPersonComponent } from './edit-person.component';
+import { PersonEditComponent } from './person-edit/person-edit.component';
 import { PersonResolver } from './person.resolve';
 
 
 const routes: Route[] = [
   {
     path: '',
-    component: EditPersonComponent
+    component: PersonEditComponent
   },
   {
     path: ':id',
-    component: EditPersonComponent,
+    component: PersonEditComponent,
     resolve: {
       person: PersonResolver
     }
