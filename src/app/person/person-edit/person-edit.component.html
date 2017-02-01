@@ -62,18 +62,7 @@
                  for="lastNameId">Date Of Birth</label>
 
           <div class="col-md-8">
-            <input class="form-control"
-                   id="dobId"
-                   type="text"
-                   placeholder="Date Of Birth (required)"
-                   formControlName="dob"/>
-            <span class="form-control-feedback" *ngIf="(personForm.get('dob').touched ||
-                                              personForm.get('dob').dirty) &&
-                                              personForm.get('dob').errors">
-              <span *ngIf="personForm.get('dob').errors.required">
-                Please enter your date of birth.
-              </span>
-            </span>
+            <ngb-datepicker #dp (navigate)="birthDate = $event.next" formControlName="dob"></ngb-datepicker>
           </div>
         </div>
 
