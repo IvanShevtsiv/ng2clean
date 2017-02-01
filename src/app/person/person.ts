@@ -1,7 +1,7 @@
 export class Person {
     id: number;
-    firstName = '';
-    lastName = '';
+    firstName: string = '';
+    lastName: string = '';
     dob: Date;
 
     constructor(values: Object = {}) {

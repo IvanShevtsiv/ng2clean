@@ -1,23 +1,22 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { EditPersonComponent } from './edit-person.component';
+import { PersonEditComponent } from './person-edit.component';
 
-describe('EditPersonComponent', () => {
-  let component: EditPersonComponent;
-  let fixture: ComponentFixture<EditPersonComponent>;
+describe('PersonEditComponent', () => {
+  let component: PersonEditComponent;
+  let fixture: ComponentFixture<PersonEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditPersonComponent ]
+      declarations: [ PersonEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditPersonComponent);
+    fixture = TestBed.createComponent(PersonEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

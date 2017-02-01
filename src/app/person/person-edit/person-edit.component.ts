@@ -1,17 +1,17 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
-import {Person} from '../person';
-import {PersonDataService} from '../person-data.service';
+import { Person } from '../person';
+import { PersonDataService } from '../person-data.service';
 
 @Component({
-  selector: 'app-edit-person',
-  templateUrl: './edit-person.component.html',
-  styleUrls: ['./edit-person.component.scss']
+  selector: 'app-person-edit',
+  templateUrl: './person-edit.component.html',
+  styleUrls: ['./person-edit.component.scss']
 })
-export class EditPersonComponent implements OnInit, OnDestroy {
+export class PersonEditComponent implements OnInit, OnDestroy {
   personForm: FormGroup;
   person: Person;
   private subscription: Subscription;
