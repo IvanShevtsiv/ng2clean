@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
+// Bootstrap import
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +21,8 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     Routing,
     CoreModule,
-    SharedModule
+    SharedModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

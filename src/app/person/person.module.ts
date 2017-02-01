@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { PersonEditComponent } from './person-edit/person-edit.component';
 import { Routing } from './person.router';
@@ -11,7 +12,8 @@ import { PersonResolver } from './person.resolve';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    Routing
+    Routing,
+    NgbModule.forRoot()
   ],
   providers: [
     PersonDataService,
