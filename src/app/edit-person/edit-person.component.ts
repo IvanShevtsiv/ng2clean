@@ -1,10 +1,10 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 
-import {Person} from "../person";
+import {Person} from '../person';
 import {PersonDataService} from '../person-data.service';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-person',
