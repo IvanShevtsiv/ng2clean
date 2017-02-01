@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Person } from './person';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class PersonDataService {
@@ -41,8 +43,8 @@ export class PersonDataService {
   }
 
   // Simulate GET /persons
-  getAllPersons(): Person[] {
-    return this.persons;
+  getAllPersons(): Observable<Person[]> {
+    return Observable.of(this.persons);
   }
 
   // Simulate GET /persons/:id

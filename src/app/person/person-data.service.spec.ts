@@ -1,6 +1,7 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { Person } from './person';
 import { PersonDataService } from './person-data.service';
+import { Observable } from "rxjs";
 
 describe('PersonDataService', () => {
   beforeEach(() => {
@@ -14,18 +15,24 @@ describe('PersonDataService', () => {
   }));
 
   describe('#getAllPersons()', () => {
-    it('should return an empty array by default', inject([PersonDataService], (service: PersonDataService): void => {
-      expect(service.getAllPersons()).toEqual([]);
+    it('should return an empty array by default', inject([PersonDataService], (service: PersonDataService): any => {
+      //expect(service.getAllPersons()).toEqual([]);
+      return service.getAllPersons().subscribe(
+        res => expect(res).toEqual([])
+      );
     }));
 
-    it('sould return all persons', inject([PersonDataService], (service: PersonDataService): void => {
+    it('should return all persons', inject([PersonDataService], (service: PersonDataService): any => {
       const person1 = new Person({firstName: 'Jhon', lastName: 'Doe'});
       const person2 = new Person({firstName: 'Jane', lastName: 'Doe'});
 
       service.addPerson(person1);
       service.addPerson(person2);
 
-      expect(service.getAllPersons()).toEqual([person1, person2]);
+      //expect(service.getAllPersons()).toEqual([person1, person2]);
+      return service.getAllPersons().subscribe(
+        res => expect(res).toEqual([person1, person2])
+      );
     }));
   });
 
@@ -50,15 +57,21 @@ describe('PersonDataService', () => {
       service.addPerson(person1);
       service.addPerson(person2);
 
-      expect(service.getAllPersons()).toEqual([person1, person2]);
+      service.getAllPersons().subscribe(
+        res => expect(res).toEqual([person1, person2])
+      );
 
       service.deletePersonById(1);
 
-      expect(service.getAllPersons()).toEqual([person2]);
+      service.getAllPersons().subscribe(
+        res => expect(res).toEqual([person2])
+      );
 
       service.deletePersonById(2);
 
-      expect(service.getAllPersons()).toEqual([]);
+      service.getAllPersons().subscribe(
+        res => expect(res).toEqual([])
+      );
     }));
 
     it('should not removing anything if person with corresponding id is not found', inject([PersonDataService],
@@ -69,11 +82,15 @@ describe('PersonDataService', () => {
       service.addPerson(person1);
       service.addPerson(person2);
 
-      expect(service.getAllPersons()).toEqual([person1, person2]);
+      service.getAllPersons().subscribe(
+        res => expect(res).toEqual([person1, person2])
+      );
 
       service.deletePersonById(3);
 
-      expect(service.getAllPersons()).toEqual([person1, person2]);
+      service.getAllPersons().subscribe(
+        res => expect(res).toEqual([person1, person2])
+      );
     }));
   });
 
