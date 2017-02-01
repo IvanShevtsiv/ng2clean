@@ -1,8 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PersonEditComponent } from './person-edit.component';
+import {PersonDataService} from '../person-data.service';
 
 describe('PersonEditComponent', () => {
   let component: PersonEditComponent;
@@ -10,7 +12,9 @@ describe('PersonEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PersonEditComponent ]
+      declarations: [ PersonEditComponent ],
+      imports: [ ReactiveFormsModule ],
+      providers: [ PersonDataService ]
     })
     .compileComponents();
   }));
