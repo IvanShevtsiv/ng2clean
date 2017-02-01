@@ -6,7 +6,7 @@
           [formGroup]="personForm">
       <fieldset>
         <div class="form-group"
-             [ngClass]="{'has-error': (personForm.get('firstName').touched ||
+             [ngClass]="{'has-danger': (personForm.get('firstName').touched ||
                                         personForm.get('firstName').dirty) &&
                                         !personForm.get('firstName').valid }">
           <label class="col-md-2 control-label"
@@ -18,7 +18,7 @@
                    type="text"
                    placeholder="First Name (required)"
                    formControlName="firstName" />
-            <span class="help-block" *ngIf="(personForm.get('firstName').touched ||
+            <span class="form-control-feedback" *ngIf="(personForm.get('firstName').touched ||
                                               personForm.get('firstName').dirty) &&
                                               personForm.get('firstName').errors">
               <span *ngIf="personForm.get('firstName').errors.required">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group"
-             [ngClass]="{'has-error': (personForm.get('lastName').touched ||
+             [ngClass]="{'has-danger': (personForm.get('lastName').touched ||
                                         personForm.get('lastName').dirty) &&
                                         !personForm.get('lastName').valid }">
           <label class="col-md-2 control-label"
@@ -44,7 +44,7 @@
                    type="text"
                    placeholder="Last Name (required)"
                    formControlName="lastName"/>
-            <span class="help-block" *ngIf="(personForm.get('lastName').touched ||
+            <span class="form-control-feedback" *ngIf="(personForm.get('lastName').touched ||
                                               personForm.get('lastName').dirty) &&
                                               personForm.get('lastName').errors">
               <span *ngIf="personForm.get('lastName').errors.required">
@@ -55,7 +55,7 @@
         </div>
 
         <div class="form-group"
-             [ngClass]="{'has-error': (personForm.get('dob').touched ||
+             [ngClass]="{'has-danger': (personForm.get('dob').touched ||
                                         personForm.get('dob').dirty) &&
                                         !personForm.get('dob').valid }">
           <label class="col-md-2 control-label"
@@ -67,7 +67,7 @@
                    type="text"
                    placeholder="Date Of Birth (required)"
                    formControlName="dob"/>
-            <span class="help-block" *ngIf="(personForm.get('dob').touched ||
+            <span class="form-control-feedback" *ngIf="(personForm.get('dob').touched ||
                                               personForm.get('dob').dirty) &&
                                               personForm.get('dob').errors">
               <span *ngIf="personForm.get('dob').errors.required">
