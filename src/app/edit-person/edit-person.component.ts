@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 
 import {Person} from "../person";
 import {PersonDataService} from '../person-data.service';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-person',
@@ -18,6 +18,7 @@ export class EditPersonComponent implements OnInit, OnDestroy {
 
   constructor(private formBuilder: FormBuilder,
               private personDataService: PersonDataService,
+              private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -36,6 +37,7 @@ export class EditPersonComponent implements OnInit, OnDestroy {
       this.personDataService.addPerson(this.personForm.value);
     }
     console.log(this.personForm);
+    this.router.navigate(['/home']);
   }
 
   private initForm(): void {

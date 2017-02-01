@@ -9,6 +9,6 @@ export class PersonResolver implements Resolve<Person> {
   constructor(private personDataService: PersonDataService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    return this.personDataService.getPersonById(route.params['id']);
+    return this.personDataService.getPersonById(parseInt(route.params['id']));
   }
 }
