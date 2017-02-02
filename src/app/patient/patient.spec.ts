@@ -1,20 +1,20 @@
-import { Person } from './person';
+import { Patient } from './patient';
 
-describe('Person', () => {
+describe('Patient', () => {
   it('should create an instance', () => {
-    expect(new Person()).toBeTruthy();
+    expect(new Patient()).toBeTruthy();
   });
 
   it('should accept values in the constructor', () => {
     const firstName = 'Jhon';
     const lastName = 'Doe';
 
-    const person = new Person({
+    const patient = new Patient({
       firstName: firstName,
       lastName: lastName
     });
 
-    expect(person.firstName).toEqual(firstName);
-    expect(person.lastName).toEqual(lastName);
+    expect(patient.firstName).toEqual(firstName);
+    expect(patient.lastName).toEqual(lastName);
   });
 });

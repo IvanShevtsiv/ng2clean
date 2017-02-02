@@ -3,24 +3,24 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { PersonEditComponent } from './person-edit.component';
-import {PersonDataService} from '../person-data.service';
+import { PatientEditComponent } from './patient-edit.component';
+import {PatientDataService} from '../patient-data.service';
 
-describe('PersonEditComponent', () => {
-  let component: PersonEditComponent;
-  let fixture: ComponentFixture<PersonEditComponent>;
+describe('PatientEditComponent', () => {
+  let component: PatientEditComponent;
+  let fixture: ComponentFixture<PatientEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PersonEditComponent ],
+      declarations: [ PatientEditComponent ],
       imports: [ ReactiveFormsModule ],
-      providers: [ PersonDataService ]
+      providers: [ PatientDataService ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PersonEditComponent);
+    fixture = TestBed.createComponent(PatientEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
