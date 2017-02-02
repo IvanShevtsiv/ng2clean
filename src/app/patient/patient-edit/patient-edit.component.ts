@@ -20,8 +20,9 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     'Allergist',
     'Anesthesiologist',
     'Cardiologist',
-    'Dentist','Dermatologist'
-    ,'Gynecologist',
+    'Dentist',
+    'Dermatologist',
+    'Gynecologist',
     'Neurologist',
     'Oncologist',
     'Orthopedic Surgeon',
@@ -58,8 +59,8 @@ export class PatientEditComponent implements OnInit, OnDestroy {
   filterProviders(event) {
     this.filteredProviders = [];
     for (let i = 0; i < this.providers.length; i++) {
-      let provider = this.providers[i];
-      if (provider.toLowerCase().indexOf(event.query.toLowerCase()) == 0) {
+      const provider = this.providers[i];
+      if (provider.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
         this.filteredProviders.push(provider);
       }
     }
@@ -69,7 +70,7 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     this.filteredProviders = [];
     setTimeout(() => {
       this.filteredProviders = this.providers;
-    })
+    });
   }
 
   private initForm(): void {

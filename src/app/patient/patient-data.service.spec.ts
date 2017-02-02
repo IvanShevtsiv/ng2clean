@@ -1,7 +1,7 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { Patient } from './patient';
 import { PatientDataService } from './patient-data.service';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs/Observable';
 
 describe('PatientDataService', () => {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('PatientDataService', () => {
 
   describe('#getAllPatients()', () => {
     it('should return an empty array by default', inject([PatientDataService], (service: PatientDataService): any => {
-      //expect(service.getAllPatients()).toEqual([]);
+      // expect(service.getAllPatients()).toEqual([]);
       return service.getAllPatients().subscribe(
         res => expect(res).toEqual([])
       );
@@ -29,7 +29,7 @@ describe('PatientDataService', () => {
       service.addPatient(patient1);
       service.addPatient(patient2);
 
-      //expect(service.getAllPatients()).toEqual([patient1, patient2]);
+      // expect(service.getAllPatients()).toEqual([patient1, patient2]);
       return service.getAllPatients().subscribe(
         res => expect(res).toEqual([patient1, patient2])
       );

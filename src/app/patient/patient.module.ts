@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
+import { AutoCompleteModule } from 'primeng/primeng';
 import { CalendarModule } from 'primeng/primeng';
-import {AutoCompleteModule} from 'primeng/primeng';
 
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
-import { Routing } from './patient.router';
 import { PatientDataService } from './patient-data.service';
 import { PatientResolver } from './patient.resolve';
+import { patients } from './reducers/patients.reducer';
+import { Routing } from './patient.router';
+import { SharedModule } from '../shared/shared.module';
+import { selectedPatient } from './reducers/selected-patient.reducer';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    Routing,
+    AutoCompleteModule,
     CalendarModule,
-    AutoCompleteModule
+    Routing,
+    SharedModule,
+    StoreModule.provideStore({patients, selectedPatient}),
   ],
   providers: [
     PatientDataService,
