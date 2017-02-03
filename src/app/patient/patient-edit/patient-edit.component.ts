@@ -78,8 +78,6 @@ export class PatientEditComponent implements OnInit, OnDestroy {
       this.patient = new Patient();
     }
 
-    const now = new Date();
-
     this.patientForm = this.formBuilder.group({
       firstName: [this.patient.firstName, [Validators.required]],
       lastName: [this.patient.lastName, Validators.required],

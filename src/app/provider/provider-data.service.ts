@@ -2,22 +2,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-import { Patient } from './patient';
+import { Provider } from './provider';
 
 @Injectable()
-export class PatientDataService {
-
+export class ProviderDataService {
   // Placeholder for last id so we can simulate
   // automatic incrementing of id's
   lastId = 0;
 
   // Placeholder for todo's
-  patients: Patient[] = [];
+  patients: Provider[] = [];
 
   constructor() { }
 
   // Simulate POST /patients
-  addPatient(patient: Patient): PatientDataService {
+  addProvider(patient: Provider): ProviderDataService {
     if (!patient.id) {
       patient.id = ++this.lastId;
     }
@@ -27,29 +26,29 @@ export class PatientDataService {
   }
 
   // Simulate DELETE /patients/:id
-  deletePatientById(id: number): PatientDataService {
+  deleteProviderById(id: number): ProviderDataService {
     this.patients = this.patients.filter(patient => patient.id !== id);
     return this;
   }
 
   // Simulate PUT /patients/:id
-  updatePatientById(id: number, values: Object = {}): Patient {
-    const patient = this.getPatientById(id);
-    if (!patient) {
+  updateProviderById(id: number, values: Object = {}): Provider {
+    const provider = this.getProviderById(id);
+    if (!provider) {
       return null;
     }
 
-    Object.assign(patient, values);
-    return patient;
+    Object.assign(provider, values);
+    return provider;
   }
 
   // Simulate GET /patients
-  getAllPatients(): Observable<Patient[]> {
-    return Observable.of(this.patients);
+  getAllProviders(): Provider[] {
+    return this.patients;
   }
 
   // Simulate GET /patients/:id
-  getPatientById(id: number): Patient {
+  getProviderById(id: number): Provider {
     return this.patients.filter(patient => patient.id === id).pop();
   }
 }

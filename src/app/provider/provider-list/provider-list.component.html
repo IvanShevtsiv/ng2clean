@@ -1,0 +1,19 @@
+<a class="btn btn-outline-primary"
+   type="button"
+   [routerLink]="['/providers/new']">
+  Add Provider
+</a>
+
+<div *ngFor="let provider of providers">
+  <div class="col-md-4 btn-group">
+    <button type="button" class="btn btn-success" [routerLink]="['/providers', provider.id]">Редагувати</button>
+    <button type="button" class="btn btn-danger" (click)="onRemoveProvider(provider)">Видалити</button>
+  </div>
+  <div class="col-md-8">
+    {{provider.id}},
+    {{provider.firstName}},
+    {{provider.lastName}},
+    {{provider.position}},
+    {{provider.email}}
+  </div>
+</div>
