@@ -1,0 +1,12 @@
+.patient-list-item {
+  margin: 8px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  p {
+    margin: 0;
+  }
+  &:hover {
+    background: #ccc;
+  }
+}

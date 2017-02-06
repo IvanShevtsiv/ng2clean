@@ -1,0 +1,23 @@
+<div class="row patient-list-item">
+  <div class="col-md-10">
+    <p>
+      <b>ID:</b> {{patient.id}}
+    </p>
+    <p>
+      <b>First Name:</b> {{patient.firstName}}
+    </p>
+    <p>
+      <b>Last Name:</b> {{patient.lastName}}
+    </p>
+    <p>
+      <b>Position:</b> {{patient.position}}
+    </p>
+    <p>
+      <b>Email:</b> {{patient.email}}
+    </p>
+  </div>
+  <div class="col-md-2 pull-right">
+    <button type="button" [routerLink]="['/patients', patient.id, 'edit']">Edit</button>
+    <button type="button" (click)="onRemovePatient(patient)">X</button>
+  </div>
+</div>

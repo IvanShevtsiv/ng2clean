@@ -4,7 +4,7 @@ import { ModuleWithProviders } from '@angular/core';
 const routes: Route[] = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { loadChildren: 'app/home/home.module#HomeModule', path: 'home' },
-  { loadChildren: 'app/patient/patient.module#PatientModule', path: 'patient' },
+  { loadChildren: 'app/patient/patient.module#PatientModule', path: 'patients' },
   { loadChildren: 'app/provider/provider.module#ProviderModule', path: 'providers' }
 ];
 

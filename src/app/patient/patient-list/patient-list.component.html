@@ -1,0 +1,9 @@
+<a class="btn btn-outline-primary"
+  type="button"
+  [routerLink]="['/patients/new']">
+  Add Patient
+</a>
+
+<div *ngFor="let patient of patients" class="row">
+  <app-patient-list-item class="col-md-6" [patient]="patient" (onRemoved)="onRemoved($event)"></app-patient-list-item>
+</div>
