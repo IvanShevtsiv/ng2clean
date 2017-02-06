@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { Patient } from './patient';
@@ -9,12 +9,15 @@ export class PatientDataService {
 
   // Placeholder for last id so we can simulate
   // automatic incrementing of id's
-  lastId = 0;
+  lastId: number;
 
   // Placeholder for todo's
-  patients: Patient[] = [];
+  patients: Patient[];
 
-  constructor() { }
+  constructor() {
+    this.patients = JSON.parse(localStorage.getItem('patients')) || [];
+    this.lastId = this.patients.length ? this.patients[this.patients.length - 1].id : 0;
+  }
 
   // Simulate POST /patients
   addPatient(patient: Patient): PatientDataService {
@@ -23,12 +26,14 @@ export class PatientDataService {
     }
 
     this.patients.push(patient);
+    localStorage.setItem('patients', JSON.stringify(this.patients));
     return this;
   }
 
   // Simulate DELETE /patients/:id
   deletePatientById(id: number): PatientDataService {
     this.patients = this.patients.filter(patient => patient.id !== id);
+    localStorage.setItem('patients', JSON.stringify(this.patients));
     return this;
   }
 
@@ -44,8 +49,11 @@ export class PatientDataService {
   }
 
   // Simulate GET /patients
-  getAllPatients(): Observable<Patient[]> {
-    return Observable.of(this.patients);
+  // getAllPatients(): Observable<Patient[]> {
+  //   return Observable.of(this.patients);
+  //}
+  getAllPatients(): Patient[] {
+    return this.patients;
   }
 
   // Simulate GET /patients/:id

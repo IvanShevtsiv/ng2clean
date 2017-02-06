@@ -38,7 +38,10 @@ export class PatientEditComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription = this.route.data.subscribe(data => this.patient = data['patient']);
+    this.subscription = this.route.data.subscribe(
+      data => this.patient = data['patient'],
+      error => console.log(error)
+    );
     this.initForm();
   }
 
@@ -52,8 +55,7 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     } else {
       this.patientDataService.addPatient(this.patientForm.value);
     }
-    console.log(this.patientForm);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/patients']);
   }
 
   filterProviders(event) {
@@ -77,7 +79,8 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     if (!this.patient) {
       this.patient = new Patient();
     }
-
+    // todo should be fixed in edit mode, with real data cmp is fall down
+    this.patient.dob = undefined;
     this.patientForm = this.formBuilder.group({
       firstName: [this.patient.firstName, [Validators.required]],
       lastName: [this.patient.lastName, Validators.required],
