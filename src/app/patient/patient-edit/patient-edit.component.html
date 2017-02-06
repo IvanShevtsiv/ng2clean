@@ -67,7 +67,7 @@
                  for="providerId">Choose a Doctor</label>
 
           <div class="col-md-8">
-            <p-autoComplete id="providerId" formControlName="provider" [(ngModel)]="provider" [suggestions]="filteredProviders" (completeMethod)="filterProviders($event)"
+            <p-autoComplete id="providerId" formControlName="provider" [suggestions]="filteredProviders" (completeMethod)="filterProviders($event)"
                             [size]="30" [minLength]="1" [dropdown]="true"
                             placeholder="Please Choose a Doctor."(onDropdownClick)="handleDropdownClick($event)"></p-autoComplete>
             <span class="form-control-feedback" *ngIf="(patientForm.get('provider').touched ||

@@ -26,14 +26,14 @@ export class PatientDataService {
     }
 
     this.patients.push(patient);
-    localStorage.setItem('patients', JSON.stringify(this.patients));
+    this._updateLocalStorage();
     return this;
   }
 
   // Simulate DELETE /patients/:id
   deletePatientById(id: number): PatientDataService {
     this.patients = this.patients.filter(patient => patient.id !== id);
-    localStorage.setItem('patients', JSON.stringify(this.patients));
+    this._updateLocalStorage();
     return this;
   }
 
@@ -43,8 +43,8 @@ export class PatientDataService {
     if (!patient) {
       return null;
     }
-
     Object.assign(patient, values);
+    this._updateLocalStorage();
     return patient;
   }
 
@@ -59,5 +59,9 @@ export class PatientDataService {
   // Simulate GET /patients/:id
   getPatientById(id: number): Patient {
     return this.patients.filter(patient => patient.id === id).pop();
+  }
+
+  private _updateLocalStorage() {
+    localStorage.setItem('patients', JSON.stringify(this.patients));
   }
 }

@@ -79,8 +79,7 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     if (!this.patient) {
       this.patient = new Patient();
     }
-    // todo should be fixed in edit mode, with real data cmp is fall down
-    this.patient.dob = undefined;
+    this.patient.dob = this.patient.dob ? new Date(this.patient.dob) : this.patient.dob;
     this.patientForm = this.formBuilder.group({
       firstName: [this.patient.firstName, [Validators.required]],
       lastName: [this.patient.lastName, Validators.required],
