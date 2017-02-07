@@ -5,16 +5,45 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PatientEditComponent } from './patient-edit.component';
 import {PatientDataService} from '../patient-data.service';
+import {AutoCompleteModule} from "primeng/components/autocomplete/autocomplete";
+import {CalendarModule} from "primeng/components/calendar/calendar";
+import {Router, ActivatedRoute} from "@angular/router";
+import {MockActivatedRoute, MockRouter} from "../../shared/mocks/routes";
+import {PatientDataMockService} from "../../shared/mocks/patient/patient-data-mock.service";
+import {PatientResolver} from "../patient.resolve";
 
 describe('PatientEditComponent', () => {
+  let patientDataMockService: PatientDataMockService;
+  let mockActivatedRoute: MockActivatedRoute;
+  let mockRouter: MockRouter;
+
   let component: PatientEditComponent;
   let fixture: ComponentFixture<PatientEditComponent>;
 
   beforeEach(async(() => {
+    patientDataMockService = new PatientDataMockService();
+    mockActivatedRoute = new MockActivatedRoute(
+      {'id': '0'},
+      {'patient': [{id: 0, firstName: 'name', lastName: 'last', provider: 'Allergist',  description: 'descr',
+        address: 'city', phone: '0365412394', email: 'dfgdf@goo.com', dob: '08-02-1992'}]}
+      );
+    mockRouter = new MockRouter();
+
     TestBed.configureTestingModule({
-      declarations: [ PatientEditComponent ],
-      imports: [ ReactiveFormsModule ],
-      providers: [ PatientDataService ]
+      declarations: [
+        PatientEditComponent
+      ],
+      imports: [
+        AutoCompleteModule,
+        CalendarModule,
+        ReactiveFormsModule
+      ],
+      providers: [
+        {provide: PatientDataService, useValue: patientDataMockService},
+        {provide: ActivatedRoute, useValue: mockActivatedRoute},
+        {provide: Router, useValue: mockRouter},
+        PatientResolver
+      ]
     })
     .compileComponents();
   }));

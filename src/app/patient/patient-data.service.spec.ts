@@ -16,10 +16,10 @@ describe('PatientDataService', () => {
 
   describe('#getAllPatients()', () => {
     it('should return an empty array by default', inject([PatientDataService], (service: PatientDataService): any => {
-      // expect(service.getAllPatients()).toEqual([]);
-      return service.getAllPatients().subscribe(
-        res => expect(res).toEqual([])
-      );
+      expect(service.getAllPatients()).toEqual([]);
+      // return service.getAllPatients().subscribe(
+      //   res => expect(res).toEqual([])
+      // );
     }));
 
     it('should return all patients', inject([PatientDataService], (service: PatientDataService): any => {
@@ -29,10 +29,10 @@ describe('PatientDataService', () => {
       service.addPatient(patient1);
       service.addPatient(patient2);
 
-      // expect(service.getAllPatients()).toEqual([patient1, patient2]);
-      return service.getAllPatients().subscribe(
-        res => expect(res).toEqual([patient1, patient2])
-      );
+      expect(service.getAllPatients()).toEqual([patient1, patient2]);
+      // return service.getAllPatients().subscribe(
+      //   res => expect(res).toEqual([patient1, patient2])
+      // );
     }));
   });
 
@@ -57,21 +57,24 @@ describe('PatientDataService', () => {
       service.addPatient(patient1);
       service.addPatient(patient2);
 
-      service.getAllPatients().subscribe(
-        res => expect(res).toEqual([patient1, patient2])
-      );
+      expect(service.getAllPatients()).toEqual([patient1, patient2]);
+      // service.getAllPatients().subscribe(
+      //   res => expect(res).toEqual([patient1, patient2])
+      // );
 
       service.deletePatientById(1);
 
-      service.getAllPatients().subscribe(
-        res => expect(res).toEqual([patient2])
-      );
+      expect(service.getAllPatients()).toEqual([patient2]);
+      // service.getAllPatients().subscribe(
+      //   res => expect(res).toEqual([patient2])
+      // );
 
       service.deletePatientById(2);
 
-      service.getAllPatients().subscribe(
-        res => expect(res).toEqual([])
-      );
+      expect(service.getAllPatients()).toEqual([]);
+      // service.getAllPatients().subscribe(
+      //   res => expect(res).toEqual([])
+      // );
     }));
 
     it('should not removing anything if patient with corresponding id is not found', inject([PatientDataService],
@@ -82,15 +85,17 @@ describe('PatientDataService', () => {
       service.addPatient(patient1);
       service.addPatient(patient2);
 
-      service.getAllPatients().subscribe(
-        res => expect(res).toEqual([patient1, patient2])
-      );
+      expect(service.getAllPatients()).toEqual([patient1, patient2]);
+      // service.getAllPatients().subscribe(
+      //   res => expect(res).toEqual([patient1, patient2])
+      // );
 
       service.deletePatientById(3);
 
-      service.getAllPatients().subscribe(
-        res => expect(res).toEqual([patient1, patient2])
-      );
+      expect(service.getAllPatients()).toEqual([patient1, patient2]);
+      // service.getAllPatients().subscribe(
+      //   res => expect(res).toEqual([patient1, patient2])
+      // );
     }));
   });
 

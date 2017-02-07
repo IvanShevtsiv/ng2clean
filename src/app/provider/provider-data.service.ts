@@ -12,6 +12,7 @@ export class ProviderDataService {
 
   // Placeholder for todo's
   patients: Provider[] = [];
+  // patients: Provider[] = [{id: 0, firstName: 'dfgdf', lastName: 'kgjg', email: 'dfgdf@goo.com', position: 'Allergist'}];
 
   constructor() { }
 
