@@ -9,6 +9,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ValidationService } from './shared/validation.service';
 
+import { TabMenuModule } from 'primeng/primeng';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +21,8 @@ import { ValidationService } from './shared/validation.service';
     HttpModule,
     Routing,
     CoreModule,
-    SharedModule
+    SharedModule,
+    TabMenuModule
   ],
   providers: [
     ValidationService
