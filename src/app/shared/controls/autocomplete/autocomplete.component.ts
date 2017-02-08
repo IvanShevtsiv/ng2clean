@@ -9,6 +9,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
       <p-autoComplete [(ngModel)]="value" [suggestions]="filteredItems" 
         (completeMethod)="filterItems($event)" (onDropdownClick)="handleDropdownClick($event)"
         [placeholder]="placeholder" [size]="30" [minLength]="1" [dropdown]="true"></p-autoComplete>
+      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['./autocomplete.component.scss'],

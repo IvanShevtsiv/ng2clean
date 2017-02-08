@@ -11,11 +11,13 @@ import { CalendarComponent } from './controls/calendar/calendar.component';
 import { InputTextComponent } from './controls/input-text/input-text.component';
 import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
 import { TextareaComponent } from './controls/textarea/textarea.component';
+import {ControlErrorMessageComponent} from './control-error-message/control-error-message.component';
 
 @NgModule({
   declarations: [
     AutocompleteComponent,
     CalendarComponent,
+    ControlErrorMessageComponent,
     InputTextComponent,
     TextareaComponent
   ],
@@ -37,6 +39,7 @@ import { TextareaComponent } from './controls/textarea/textarea.component';
     ReactiveFormsModule,
     AutocompleteComponent,
     CalendarComponent,
+    ControlErrorMessageComponent,
     InputTextComponent,
     TextareaComponent
   ]

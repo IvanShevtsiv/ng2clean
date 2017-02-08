@@ -7,6 +7,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     <div class="form-group">
       <label class="control-label" *ngIf="label !== undefined ">{{label}}</label>
       <textarea class="form-control" [(ngModel)]="value" [placeholder]="placeholder"></textarea>
+      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['./textarea.component.scss'],

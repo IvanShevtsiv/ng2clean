@@ -2,11 +2,12 @@ import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'app-input',
+  selector: 'app-input-text',
   template: `
     <div class="form-group">
       <label class="control-label" *ngIf="label !== undefined ">{{label}}</label>
-      <input class="form-control" pInputText [(ngModel)]="value" [placeholder]="placeholder"/>
+      <input class="form-control" type="text" pInputText [(ngModel)]="value" [placeholder]="placeholder"/>
+      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['input-text.component.scss'],

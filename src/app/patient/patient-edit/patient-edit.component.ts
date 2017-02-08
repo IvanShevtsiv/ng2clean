@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Patient } from '../patient';
 import { PatientDataService } from '../patient-data.service';
+import { ValidationService } from '../../shared/validation.service';
 
 @Component({
   selector: 'app-patient-edit',
@@ -29,8 +30,6 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     'Plastic Surgeon',
     'Urologist'
   ];
-  filteredProviders: any[];
-  provider: string;
 
   constructor(private formBuilder: FormBuilder,
               private patientDataService: PatientDataService,
@@ -55,24 +54,11 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     } else {
       this.patientDataService.addPatient(this.patientForm.value);
     }
+    this.navigateBack();
+  }
+
+  private navigateBack() {
     this.router.navigate(['/patients']);
-  }
-
-  filterProviders(event) {
-    this.filteredProviders = [];
-    for (let i = 0; i < this.providers.length; i++) {
-      const provider = this.providers[i];
-      if (provider.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
-        this.filteredProviders.push(provider);
-      }
-    }
-  }
-
-  handleDropdownClick() {
-    this.filteredProviders = [];
-    setTimeout(() => {
-      this.filteredProviders = this.providers;
-    });
   }
 
   private initForm(): void {
@@ -81,14 +67,14 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     }
     this.patient.dob = this.patient.dob ? new Date(this.patient.dob) : this.patient.dob;
     this.patientForm = this.formBuilder.group({
-      firstName: [this.patient.firstName, [Validators.required]],
-      lastName: [this.patient.lastName, Validators.required],
+      firstName: [this.patient.firstName, [Validators.required, Validators.maxLength(75)]],
+      lastName: [this.patient.lastName, [Validators.required, Validators.maxLength(75)]],
       dob: [this.patient.dob, Validators.required],
       provider: [this.patient.provider, Validators.required],
-      description: [this.patient.description, Validators.required],
-      address: [this.patient.address, Validators.required],
-      phone: [this.patient.phone, Validators.required],
-      email: [this.patient.email, Validators.required]
+      description: [this.patient.description, [Validators.required, Validators.maxLength(300)]],
+      address: [this.patient.address, [Validators.required, Validators.maxLength(250)]],
+      phone: [this.patient.phone, [Validators.required, ValidationService.phoneNumberValidator, Validators.maxLength(20)]],
+      email: [this.patient.email, [Validators.required, ValidationService.emailValidator, Validators.maxLength(75)]]
     });
   }
 }

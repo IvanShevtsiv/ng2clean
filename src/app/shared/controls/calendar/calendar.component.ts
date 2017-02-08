@@ -7,6 +7,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     <div class="form-group">
       <label class="control-label" *ngIf="label !== undefined ">{{label}}</label>
       <p-calendar [(ngModel)]="value" [placeholder]="placeholder" [showIcon]="true"></p-calendar>
+      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['./calendar.component.scss'],
