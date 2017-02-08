@@ -10,7 +10,7 @@
           (ngSubmit)="onSubmit()"
           [formGroup]="patientForm">
       <fieldset>
-        <app-input formControlName="firstName" [type]="'text'" [placeholder]="'First Name (required)'" [label]="'First Name'"></app-input>
+        <app-input formControlName="firstName" [placeholder]="'First Name (required)'" [label]="'First Name'"></app-input>
         <!--<div class="form-group"-->
              <!--[ngClass]="{'has-danger': (patientForm.get('firstName').touched ||-->
                                         <!--patientForm.get('firstName').dirty) &&-->
@@ -19,7 +19,7 @@
                  <!--for="firstNameId">First Name</label>-->
 
           <!--<div class="col-md-8">-->
-            <!--<input class="form-control"-->
+            <!--<input-text class="form-control"-->
                    <!--id="firstNameId"-->
                    <!--type="text"-->
                    <!--placeholder="First Name (required)"-->
@@ -80,38 +80,40 @@
             </span>
           </div>
         </div>
-        <div class="form-group"
-             [ngClass]="{'has-danger': (patientForm.get('dob').touched ||
-                                        patientForm.get('dob').dirty) &&
-                                        !patientForm.get('dob').valid }">
-          <label class="col-md-2 control-label"
-                 for="dobId">Date Of Birth</label>
+        <app-calendar formControlName="dob" [placeholder]="'MM/DD/YYYY'" [label]="'Date Of Birth'"></app-calendar>
+        <!--<div class="form-group"-->
+             <!--[ngClass]="{'has-danger': (patientForm.get('dob').touched ||-->
+                                        <!--patientForm.get('dob').dirty) &&-->
+                                        <!--!patientForm.get('dob').valid }">-->
+          <!--<label class="col-md-2 control-label"-->
+                 <!--for="dobId">Date Of Birth</label>-->
 
-          <div class="col-md-8">
-            <p-calendar formControlName="dob"></p-calendar>
-          </div>
-        </div>
-        <div class="form-group"
-             [ngClass]="{'has-danger': (patientForm.get('description').touched ||
-                                        patientForm.get('description').dirty) &&
-                                        !patientForm.get('description').valid }">
-          <label class="col-md-2 control-label"
-                 for="description">Description</label>
+          <!--<div class="col-md-8">-->
+            <!--<p-calendar formControlName="dob"></p-calendar>-->
+          <!--</div>-->
+        <!--</div>-->
+        <app-textarea formControlName="description" [placeholder]="'Description (required)'" [label]="'Description'"></app-textarea>
+        <!--<div class="form-group"-->
+             <!--[ngClass]="{'has-danger': (patientForm.get('description').touched ||-->
+                                        <!--patientForm.get('description').dirty) &&-->
+                                        <!--!patientForm.get('description').valid }">-->
+          <!--<label class="col-md-2 control-label"-->
+                 <!--for="description">Description</label>-->
 
-          <div class="col-md-8">
-            <textarea class="form-control"
-                   id="description"
-                   placeholder="Description (required)"
-                   formControlName="description"></textarea>
-            <span class="form-control-feedback" *ngIf="(patientForm.get('description').touched ||
-                                              patientForm.get('description').dirty) &&
-                                              patientForm.get('description').errors">
-              <span *ngIf="patientForm.get('description').errors.required">
-                Please enter description.
-              </span>
-            </span>
-          </div>
-        </div>
+          <!--<div class="col-md-8">-->
+            <!--<textarea class="form-control"-->
+                   <!--id="description"-->
+                   <!--placeholder="Description (required)"-->
+                   <!--formControlName="description"></textarea>-->
+            <!--<span class="form-control-feedback" *ngIf="(patientForm.get('description').touched ||-->
+                                              <!--patientForm.get('description').dirty) &&-->
+                                              <!--patientForm.get('description').errors">-->
+              <!--<span *ngIf="patientForm.get('description').errors.required">-->
+                <!--Please enter description.-->
+              <!--</span>-->
+            <!--</span>-->
+          <!--</div>-->
+        <!--</div>-->
 
         <div class="form-group"
              [ngClass]="{'has-danger': (patientForm.get('address').touched ||

@@ -51,7 +51,7 @@ export class PatientDataService {
   // Simulate GET /patients
   // getAllPatients(): Observable<Patient[]> {
   //   return Observable.of(this.patients);
-  //}
+  // }
   getAllPatients(): Patient[] {
     return this.patients;
   }

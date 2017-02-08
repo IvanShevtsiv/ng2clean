@@ -1,8 +1,7 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async, inject } from '@angular/core/testing';
+
+import { Provider } from './provider';
 import { ProviderDataService } from './provider-data.service';
-import {Provider} from "./provider";
 
 describe('ProviderDataService', () => {
   beforeEach(() => {
@@ -86,7 +85,8 @@ describe('ProviderDataService', () => {
   });
 
   describe('#updateProviderById(id, values)', () => {
-    it('should return provider with the corresponding id and updated data', inject([ProviderDataService], (service: ProviderDataService) => {
+    it('should return provider with the corresponding id and updated data',
+      inject([ProviderDataService], (service: ProviderDataService) => {
       const provider = new Provider({firstName: 'Jhon', lastName: 'Doe', position: '', email: ''});
       const newName = 'Max';
 

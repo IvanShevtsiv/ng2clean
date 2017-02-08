@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
-import { AutoCompleteModule } from 'primeng/primeng';
-import { CalendarModule } from 'primeng/primeng';
-
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { PatientListItemComponent } from './patient-list-item/patient-list-item.component';
@@ -16,8 +13,6 @@ import { selectedPatient } from './reducers/selected-patient.reducer';
 
 @NgModule({
   imports: [
-    AutoCompleteModule,
-    CalendarModule,
     Routing,
     SharedModule,
     StoreModule.provideStore({patients, selectedPatient}),

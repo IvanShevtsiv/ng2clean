@@ -2,15 +2,16 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
+import { AutoCompleteModule } from 'primeng/components/autocomplete/autocomplete';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
+
+import { MockActivatedRoute, MockRouter } from '../../shared/mocks/routes';
 import { PatientEditComponent } from './patient-edit.component';
-import {PatientDataService} from '../patient-data.service';
-import {AutoCompleteModule} from "primeng/components/autocomplete/autocomplete";
-import {CalendarModule} from "primeng/components/calendar/calendar";
-import {Router, ActivatedRoute} from "@angular/router";
-import {MockActivatedRoute, MockRouter} from "../../shared/mocks/routes";
-import {PatientDataMockService} from "../../shared/mocks/patient/patient-data-mock.service";
-import {PatientResolver} from "../patient.resolve";
+import { PatientDataMockService } from '../../shared/mocks/patient/patient-data-mock.service';
+import { PatientDataService } from '../patient-data.service';
+import { PatientResolver } from '../patient.resolve';
 
 describe('PatientEditComponent', () => {
   let patientDataMockService: PatientDataMockService;

@@ -2,21 +2,40 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { InputComponent } from './input/input.component';
+import { AutoCompleteModule } from 'primeng/components/autocomplete/autocomplete';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
+import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+
+import { CalendarComponent } from './controls/calendar/calendar.component';
+import { InputTextComponent } from './controls/input-text/input-text.component';
+import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
+import { TextareaComponent } from './controls/textarea/textarea.component';
 
 @NgModule({
   declarations: [
-    InputComponent
+    CalendarComponent,
+    InputTextComponent,
+    TextareaComponent
   ],
   imports: [
+    AutoCompleteModule,
+    CalendarModule,
     CommonModule,
-    ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    InputTextModule,
+    InputTextareaModule,
+    ReactiveFormsModule
   ],
   exports: [
+    AutoCompleteModule,
+    CalendarModule,
     CommonModule,
+    InputTextModule,
+    InputTextareaModule,
     ReactiveFormsModule,
-    InputComponent
+    CalendarComponent,
+    InputTextComponent,
+    TextareaComponent
   ]
 })
 export class SharedModule {}
