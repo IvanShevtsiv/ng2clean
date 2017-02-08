@@ -1,0 +1,11 @@
+<h2>Appointments List</h2>
+
+<a class="btn btn-outline-primary"
+  type="button"
+  [routerLink]="['/appointments/new']">
+  Add Appointment
+</a>
+
+<div *ngFor="let appointment of appointments" class="row">
+  <app-appointment-list-item class="col-md-6" [appointment]="appointment" (onRemoved)="onRemoved($event)"></app-appointment-list-item>
+</div>
