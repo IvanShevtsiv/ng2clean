@@ -7,6 +7,9 @@ import { Routing } from './app.router';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { ValidationService } from './shared/validation.service';
+
+import { TabMenuModule } from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,12 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     Routing,
     CoreModule,
-    SharedModule
+    SharedModule,
+    TabMenuModule
   ],
-  providers: [],
+  providers: [
+    ValidationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

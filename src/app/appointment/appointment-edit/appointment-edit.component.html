@@ -1,0 +1,37 @@
+<a class="btn btn-outline-primary"
+   type="button"
+   [routerLink]="['/appointments']">
+  Back
+</a>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <form class="form-horizontal"
+          novalidate
+          (ngSubmit)="onSubmit()"
+          [formGroup]="appointmentForm">
+      <fieldset>
+        <app-calendar formControlName="startDate" [placeholder]="'MM/DD/YYYY'" [label]="'Start Date'"></app-calendar>
+
+        <app-calendar formControlName="endDate" [placeholder]="'MM/DD/YYYY'" [label]="'End Date'"></app-calendar>
+
+        <app-textarea formControlName="description" [placeholder]="'Description (required)'" [label]="'Description'"></app-textarea>
+
+        <div class="form-group">
+          <div class="col-md-4 col-md-offset-2">
+            <span>
+              <button class="btn btn-primary"
+                      type="submit"
+                      [disabled]="!appointmentForm.valid">
+                Save
+              </button>
+              <button class="btn btn-secondary"
+                      type="reset">
+                Reset
+              </button>
+            </span>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="row appointment-list-item">
+  <div class="col-md-8">
+    <p>
+      <b>ID:</b> {{ appointment.id }}
+    </p>
+    <p>
+      <b>Provider ID:</b> {{ appointment.providerId }}
+    </p>
+    <p>
+      <b>Patient ID:</b> {{ appointment.patientId }}
+    </p>
+    <p>
+      <b>Start Date:</b> {{ appointment.startDate }}
+    </p>
+    <p>
+      <b>End Date:</b> {{ appointment.endDate }}
+    </p>
+    <p>
+      <b>Description:</b> {{ appointment.description }}
+    </p>
+  </div>
+  <div class="col-md-4 text-right">
+    <button type="button" [routerLink]="['/appointments', appointment.id, 'edit']">Edit</button>
+    <button type="button" (click)="onRemoveAppointment(appointment)">X</button>
+  </div>
+</div>

@@ -8,31 +8,30 @@ import { AutoCompleteModule } from 'primeng/components/autocomplete/autocomplete
 import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 import { MockActivatedRoute, MockRouter } from '../../shared/mocks/routes';
-import { PatientEditComponent } from './patient-edit.component';
-import { PatientDataMockService } from '../../shared/mocks/patient/patient-data-mock.service';
-import { PatientDataService } from '../patient-data.service';
-import { PatientResolver } from '../patient.resolve';
+import { AppointmentEditComponent } from './appointment-edit.component';
+import { AppointmentDataMockService } from '../../shared/mocks/appointment/appointment-data-mock.service';
+import { AppointmentDataService } from '../appointment-data.service';
+import { AppointmentResolver } from '../appointment.resolve';
 
-describe('PatientEditComponent', () => {
-  let patientDataMockService: PatientDataMockService;
+describe('AppointmentEditComponent', () => {
+  let appointmentDataMockService: AppointmentDataMockService;
   let mockActivatedRoute: MockActivatedRoute;
   let mockRouter: MockRouter;
 
-  let component: PatientEditComponent;
-  let fixture: ComponentFixture<PatientEditComponent>;
+  let component: AppointmentEditComponent;
+  let fixture: ComponentFixture<AppointmentEditComponent>;
 
   beforeEach(async(() => {
-    patientDataMockService = new PatientDataMockService();
+    appointmentDataMockService = new AppointmentDataMockService();
     mockActivatedRoute = new MockActivatedRoute(
       {'id': '0'},
-      {'patient': [{id: 0, firstName: 'name', lastName: 'last', provider: 'Allergist',  description: 'descr',
-        address: 'city', phone: '0365412394', email: 'dfgdf@goo.com', dob: '08-02-1992'}]}
-      );
+      {'appointment': [{id: 0, patientId: 1, providerId: 2, description: 'descr', startDate: '01-01-1992', endDate: '12-12-1993'}]}
+    );
     mockRouter = new MockRouter();
 
     TestBed.configureTestingModule({
       declarations: [
-        PatientEditComponent
+        AppointmentEditComponent
       ],
       imports: [
         AutoCompleteModule,
@@ -40,17 +39,17 @@ describe('PatientEditComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
-        {provide: PatientDataService, useValue: patientDataMockService},
+        {provide: AppointmentDataService, useValue: appointmentDataMockService},
         {provide: ActivatedRoute, useValue: mockActivatedRoute},
         {provide: Router, useValue: mockRouter},
-        PatientResolver
+        AppointmentResolver
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PatientEditComponent);
+    fixture = TestBed.createComponent(AppointmentEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
