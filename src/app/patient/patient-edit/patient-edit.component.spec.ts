@@ -25,9 +25,8 @@ describe('PatientEditComponent', () => {
     patientDataMockService = new PatientDataMockService();
     mockActivatedRoute = new MockActivatedRoute(
       {'id': '0'},
-      {'patient': [{id: 0, firstName: 'name', lastName: 'last', provider: 'Allergist',  description: 'descr',
-        address: 'city', phone: '0365412394', email: 'dfgdf@goo.com', dob: '08-02-1992'}]}
-      );
+      {'patient': [{id: 0, firstName: 'name', lastName: 'last', address: 'city', phone: '0365412394', dateOfBirth: '08-02-1992'}]}
+    );
     mockRouter = new MockRouter();
 
     TestBed.configureTestingModule({

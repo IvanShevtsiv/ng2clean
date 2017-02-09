@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
+import { ApiService } from '../api/api.service';
+
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { PatientListItemComponent } from './patient-list-item/patient-list-item.component';
@@ -19,6 +21,7 @@ import { selectedPatient } from './reducers/selected-patient.reducer';
     StoreModule.provideStore({patients, selectedPatient}),
   ],
   providers: [
+    ApiService,
     PatientDataService,
     PatientResolver,
     PatientsResolver

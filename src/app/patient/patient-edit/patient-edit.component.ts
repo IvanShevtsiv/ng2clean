@@ -17,20 +17,6 @@ export class PatientEditComponent implements OnInit, OnDestroy {
   patient: Patient;
   private subscription: Subscription;
 
-  providers: string[] = [
-    'Allergist',
-    'Anesthesiologist',
-    'Cardiologist',
-    'Dentist',
-    'Dermatologist',
-    'Gynecologist',
-    'Neurologist',
-    'Oncologist',
-    'Orthopedic Surgeon',
-    'Plastic Surgeon',
-    'Urologist'
-  ];
-
   constructor(private formBuilder: FormBuilder,
               private patientDataService: PatientDataService,
               private router: Router,
@@ -66,16 +52,13 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     if (!this.patient) {
       this.patient = new Patient();
     }
-    this.patient.dob = this.patient.dob ? new Date(this.patient.dob) : this.patient.dob;
+    this.patient.dateOfBirth = this.patient.dateOfBirth ? new Date(this.patient.dateOfBirth) : this.patient.dateOfBirth;
     this.patientForm = this.formBuilder.group({
       firstName: [this.patient.firstName, [Validators.required, Validators.maxLength(75)]],
       lastName: [this.patient.lastName, [Validators.required, Validators.maxLength(75)]],
-      dob: [this.patient.dob, Validators.required],
-      provider: [this.patient.provider, Validators.required],
-      description: [this.patient.description, [Validators.required, Validators.maxLength(300)]],
+      dateOfBirth: [this.patient.dateOfBirth, Validators.required],
       address: [this.patient.address, [Validators.required, Validators.maxLength(250)]],
-      phone: [this.patient.phone, [Validators.required, ValidationService.phoneNumberValidator, Validators.maxLength(20)]],
-      email: [this.patient.email, [Validators.required, ValidationService.emailValidator, Validators.maxLength(75)]]
+      phone: [this.patient.phone, [Validators.required, ValidationService.phoneNumberValidator, Validators.maxLength(20)]]
     });
   }
 }

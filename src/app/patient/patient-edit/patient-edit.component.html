@@ -24,28 +24,12 @@
           <app-control-error-message [control]="patientForm.get('lastName')"></app-control-error-message>
         </app-input-text>
 
-        <app-autocomplete formControlName="provider" [placeholder]="'Please Choose a Doctor'"
-                          [label]="'Choose a Doctor'" [items]="providers"
-                          [ngClass]="{'has-danger': (patientForm.get('provider').touched ||
-                                        patientForm.get('provider').dirty) &&
-                                        !patientForm.get('provider').valid }">
-          <app-control-error-message [control]="patientForm.get('provider')"></app-control-error-message>
-        </app-autocomplete>
-
-        <app-calendar formControlName="dob" [placeholder]="'MM/DD/YYYY'" [label]="'Date Of Birth'"
-                      [ngClass]="{'has-danger': (patientForm.get('dob').touched ||
-                                        patientForm.get('dob').dirty) &&
-                                        !patientForm.get('dob').valid }">
-          <app-control-error-message [control]="patientForm.get('dob')"></app-control-error-message>
+        <app-calendar formControlName="dateOfBirth" [placeholder]="'MM/DD/YYYY'" [label]="'Date Of Birth'"
+                      [ngClass]="{'has-danger': (patientForm.get('dateOfBirth').touched ||
+                                        patientForm.get('dateOfBirth').dirty) &&
+                                        !patientForm.get('dateOfBirth').valid }">
+          <app-control-error-message [control]="patientForm.get('dateOfBirth')"></app-control-error-message>
         </app-calendar>
-
-        <app-textarea formControlName="description" [placeholder]="'Description (required)'" [label]="'Description'"
-                      [ngClass]="{'has-danger': (patientForm.get('description').touched ||
-                                        patientForm.get('description').dirty) &&
-                                        !patientForm.get('description').valid }">
-          <app-control-error-message [control]="patientForm.get('description')"></app-control-error-message>
-        </app-textarea>
-
 
         <app-input-text formControlName="address" [placeholder]="'Address (required)'" [label]="'Address'"
                         [ngClass]="{'has-danger': (patientForm.get('address').touched ||
@@ -59,13 +43,6 @@
                                         patientForm.get('phone').dirty) &&
                                         !patientForm.get('phone').valid }">
           <app-control-error-message [control]="patientForm.get('phone')"></app-control-error-message>
-        </app-input-text>
-
-        <app-input-text formControlName="email" [placeholder]="'Email (required)'" [label]="'Email'"
-                        [ngClass]="{'has-danger': (patientForm.get('email').touched ||
-                                        patientForm.get('email').dirty) &&
-                                        !patientForm.get('email').valid }">
-          <app-control-error-message [control]="patientForm.get('email')"></app-control-error-message>
         </app-input-text>
 
         <div class="form-group">

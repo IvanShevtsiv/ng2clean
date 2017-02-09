@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+
+// Import RxJs required methods
+import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/toPromise';
+
+import { ApiService } from '../api/api.service';
 
 import { Patient } from './patient';
 
@@ -16,8 +23,8 @@ export class PatientDataService {
   // Placeholder for todo's
   patients: Patient[];
 
-  constructor(private http: Http) {
-    this.patients = JSON.parse(localStorage.getItem('patients')) || [];
+  constructor(private http: Http, private api: ApiService) {
+    this.patients = this.getAllPatients();
     this.lastId = this.patients.length ? this.patients[this.patients.length - 1].id : 0;
   }
 
@@ -27,15 +34,10 @@ export class PatientDataService {
       patient.id = ++this.lastId;
     }
     const body = JSON.stringify(patient);
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Origin', '*');
-    console.log(body);
-    return this.http.post('http://192.168.241.221:3080/api/Patient', body, {headers: headers})
-      .map((data: Response) => {
-        console.log(data);
-        return data.json();
-      });
+    const headers = new Headers(this.api.apiConfig.headers);
+
+    return this.http.post(this.api.patient(), body, {headers: headers})
+      .map((res: Response) => res.json());
   }
 
   // Simulate DELETE /patients/:id
@@ -56,13 +58,14 @@ export class PatientDataService {
     return patient;
   }
 
-  getAllPatients(): Observable<any> {
-    return this.http.get('http://192.168.241.221:3080/api/Patient')
-      .map(data => data.json());
+  getAllPatients(): Observable<Patient[]> {
+    return this.http.get(this.api.patient())
+      .map((res: Response) => res.json());
   }
 
   // Simulate GET /patients/:id
   getPatientById(id: number): Patient {
+    console.log(this.patients);
     return this.patients.filter(patient => patient.id === id).pop();
   }
 
