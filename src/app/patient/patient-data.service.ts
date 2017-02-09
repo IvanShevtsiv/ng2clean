@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
@@ -14,20 +16,26 @@ export class PatientDataService {
   // Placeholder for todo's
   patients: Patient[];
 
-  constructor() {
+  constructor(private http: Http) {
     this.patients = JSON.parse(localStorage.getItem('patients')) || [];
     this.lastId = this.patients.length ? this.patients[this.patients.length - 1].id : 0;
   }
 
   // Simulate POST /patients
-  addPatient(patient: Patient): PatientDataService {
+  addPatient(patient: Patient) {
     if (!patient.id) {
       patient.id = ++this.lastId;
     }
-
-    this.patients.push(patient);
-    this._updateLocalStorage();
-    return this;
+    const body = JSON.stringify(patient);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    console.log(body);
+    return this.http.post('http://192.168.241.221:3080/api/Patient', body, {headers: headers})
+      .map((data: Response) => {
+        console.log(data);
+        return data.json();
+      });
   }
 
   // Simulate DELETE /patients/:id
@@ -48,12 +56,9 @@ export class PatientDataService {
     return patient;
   }
 
-  // Simulate GET /patients
-  // getAllPatients(): Observable<Patient[]> {
-  //   return Observable.of(this.patients);
-  //}
-  getAllPatients(): Patient[] {
-    return this.patients;
+  getAllPatients(): Observable<any> {
+    return this.http.get('http://192.168.241.221:3080/api/Patient')
+      .map(data => data.json());
   }
 
   // Simulate GET /patients/:id

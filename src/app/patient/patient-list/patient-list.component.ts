@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Patient } from '../patient';
 import { PatientDataService } from '../patient-data.service';
@@ -10,20 +12,23 @@ import { PatientDataService } from '../patient-data.service';
 })
 export class PatientListComponent implements OnInit {
 
-  patients: Patient[] = [];
+  patients: Patient[];
+  private subscription: Subscription;
 
-  constructor(private patientDataService: PatientDataService) { }
+  constructor(private patientDataService: PatientDataService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getAllPatients();
+    this.subscription = this.route.data.subscribe(
+      data => {
+        this.patients = data['patients'];
+      },
+      error => console.log(error)
+    );
   }
 
   onRemoved(removedPatientId) {
     this.patients = this.patients.filter(patient => patient.id !== removedPatientId);
-  }
-
-  private getAllPatients() {
-    this.patients = this.patientDataService.getAllPatients();
   }
 
 }

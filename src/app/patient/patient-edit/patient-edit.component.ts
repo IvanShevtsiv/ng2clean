@@ -53,7 +53,8 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     if (this.patient.id) {
       this.patientDataService.updatePatientById(this.patient.id, this.patientForm.value);
     } else {
-      this.patientDataService.addPatient(this.patientForm.value);
+      this.patientDataService.addPatient(this.patientForm.value)
+        .subscribe((data) => console.log(data));
     }
     this.router.navigate(['/patients']);
   }

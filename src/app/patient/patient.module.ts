@@ -9,6 +9,7 @@ import { PatientListComponent } from './patient-list/patient-list.component';
 import { PatientListItemComponent } from './patient-list-item/patient-list-item.component';
 import { PatientDataService } from './patient-data.service';
 import { PatientResolver } from './patient.resolve';
+import { PatientsResolver } from './patients.resolve';
 import { patients } from './reducers/patients.reducer';
 import { Routing } from './patient.router';
 import { SharedModule } from '../shared/shared.module';
@@ -24,7 +25,8 @@ import { selectedPatient } from './reducers/selected-patient.reducer';
   ],
   providers: [
     PatientDataService,
-    PatientResolver
+    PatientResolver,
+    PatientsResolver
   ],
   declarations: [
     PatientEditComponent,
