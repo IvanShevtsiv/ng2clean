@@ -5,7 +5,7 @@ export class ApiService {
       'Access-Control-Allow-Origin': '*',
       'content-type': 'application/json; charset=utf-8'
     },
-    baseUrl: 'https://192.168.241.221'
+    baseUrl: 'https://192.168.241.221:443'
   };
 
   // Patient api's

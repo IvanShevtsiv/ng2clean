@@ -6,8 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/toPromise';
 
 import { ApiService } from '../api/api.service';
 
@@ -15,24 +13,13 @@ import { Patient } from './patient';
 
 @Injectable()
 export class PatientDataService {
-
-  // Placeholder for last id so we can simulate
-  // automatic incrementing of id's
-  lastId: number;
-
   // Placeholder for todo's
   patients: Patient[];
 
-  constructor(private http: Http, private api: ApiService) {
-    this.patients = this.getAllPatients();
-    this.lastId = this.patients.length ? this.patients[this.patients.length - 1].id : 0;
-  }
+  constructor(private http: Http, private api: ApiService) {}
 
   // Simulate POST /patients
   addPatient(patient: Patient) {
-    if (!patient.id) {
-      patient.id = ++this.lastId;
-    }
     const body = JSON.stringify(patient);
     const headers = new Headers(this.api.apiConfig.headers);
 
@@ -43,7 +30,6 @@ export class PatientDataService {
   // Simulate DELETE /patients/:id
   deletePatientById(id: number): PatientDataService {
     this.patients = this.patients.filter(patient => patient.id !== id);
-    this._updateLocalStorage();
     return this;
   }
 
@@ -54,7 +40,6 @@ export class PatientDataService {
       return null;
     }
     Object.assign(patient, values);
-    this._updateLocalStorage();
     return patient;
   }
 
@@ -67,9 +52,5 @@ export class PatientDataService {
   getPatientById(id: number): Patient {
     console.log(this.patients);
     return this.patients.filter(patient => patient.id === id).pop();
-  }
-
-  private _updateLocalStorage() {
-    localStorage.setItem('patients', JSON.stringify(this.patients));
   }
 }

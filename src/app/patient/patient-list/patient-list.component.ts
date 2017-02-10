@@ -30,5 +30,4 @@ export class PatientListComponent implements OnInit {
   onRemoved(removedPatientId) {
     this.patients = this.patients.filter(patient => patient.id !== removedPatientId);
   }
-
 }
